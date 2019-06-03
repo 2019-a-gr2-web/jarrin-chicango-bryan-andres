@@ -9,7 +9,7 @@ export class SistemasOperativosService {
     constructor(){
         const sistema:Sistema={
             nombre:'Windows 10',
-            fechaLanzamiento:new Date(2012,1,1),
+            fechaLanzamiento:new Date(2012,1111),
             instalado:true,
             pesoEnGigas:4.5,
             versionApi:4.7

@@ -6,24 +6,25 @@ import { createReadStream } from 'fs';
 Injectable()
 export class AplicacionService {
     bddAplicaciones:Aplicacion[]=[];
-    recnum=1;
+    contadorID=1;
     constructor(private readonly _sistemaServices:SistemasOperativosService){
         const aplicacion:Aplicacion={
-            nombre:'Visual Studio Code',
-            fechaLanzamiento:new Date(2009,10,22),
-            costo:10.5,
-            pesoEnGigas:1.3,
+            nombre:'Pentahoo',
+            fechaLanzamiento:new Date(2019,12,12),
+            costo:100,
+            pesoEnGigas:1.5,
             sistemaOperativoId:1,
-            urlDescarga:'https://code.visualstudio.com/',
-            version:1.5
+            urlDescarga:'https://www.hitachivantara.com/go/pentaho.htmlv',
+            version:8.2
         }
+
         this.crear(aplicacion);
-        
+
     }
     crear(nuevaAplicacion:Aplicacion):Aplicacion{
-        nuevaAplicacion.id = this.recnum;
+        nuevaAplicacion.id = this.contadorID;
         this.bddAplicaciones.push(nuevaAplicacion);
-        this.recnum++;
+        this.contadorID++;
         return nuevaAplicacion;
     }
 
