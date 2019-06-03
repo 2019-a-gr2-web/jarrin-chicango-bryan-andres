@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sistemas Operativos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+            input{
+                width: 100%;
+            }
+            .salir{
+                text-align: right;
+            }
+            .fila{
+                width: 100%;
+            }
+            .inicio{
+                text-align: center;
+                margin-top: 20%;
+                width: 100%;
+            }
+            .salto_linea{
+                margin-top: 3px;
+            }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h2>Crear Sistema</h2>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <h4><%=nombre %></h4>
+            </div>
+            <div class="col-lg-1 col-md- col-sm-1">
+                <form  action="/api/auth/salir">
+                    <button type="submit">Salir</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-2 col-md-1">
+                
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <form action="crear" method="POST">
+                    <h3<label for="nombre">Nombre</label></h3>
+                    <br><br>
+                    <input type="text" id="nombre" name="nombre">
+                    <br><br>
+                    <br><br>
+                    <h3<label for="versionApi">Version Api</label></h3>
+                    <br><br>
+                    <input type="number" id="versionApi" name="versionApi" min="0" step="0.1">
+                    <br><br>
+                    <br><br>
+                    <h3<label for="pesoEnGigas">Peso (GB)</label></h3>
+                    <br><br>
+                    <input type="number" id="pesoEnGigas" name="pesoEnGigas" min="0" max="30" step="0.1">
+                    <br><br>
+                    <br><br>
+                    <h3<label for="fechaLanzamiento">Fecha Lanzamiento</label></h3>
+                    <br><br>
+                    <input type="date" id="fechaLanzamiento" name="fechaLanzamiento" >
+                    <br><br>
+                    <br><br>
+                    <h3<label for="instalado">Instalado</label></h3>
+                    <br><br>
+                    <input type="checkbox" id="instalado" name="instalado">
+                    <br><br>
+                    <br><br>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Crear</button>
+                    <a href="http://localhost:3000/api/sistemas/lista"><button type="button">Cancelar</button></a>
+                    
+                </form>
+            </div>
+            <div class="col-lg-2 col-md-1">
+                
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplicaciones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+            .expandir{
+                width: 100%;
+            }
+            .boton{
+                margin-top: 15px;
+            }
+            .volver{
+                text-align: left;
+            }
+            .salir{
+                text-align: right;
+            }
+            .fila{
+                margin-top: 10%;
+                text-align: center;
+            }
+            .busqueda{
+                margin-top: 5%;
+            }
+            table,tr,th,td{
+                border: solid black 2px;
+                text-align: center;
+            }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-1 ">
+                    <form  class="volver" action="/api/sistemas/lista">
+                        <button type="submit">Volver</button>
+                    </form>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 ">
+                <h2>Lista de aplicaciones</h2>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <h4><%=nombre %></h4>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <form  action="/api/auth/salir">
+                    <button type="submit">Salir</button>
+                </form>
+            </div>
+        </div>
+        <form class="busqueda" action="/api/aplicacion/buscar">
+            <div class="form-group row">
+                <div class="col-lg-2 col-md-1">
+                    
+                </div>
+                <div class="col-lg-12 col-md-6 col-sm-12">
+                    <label for="busqueda">BUSCAR:</label>
+                    <input class="expandir" type="text" placeholder="Busqueda"
+                           id="busqueda" name="busqueda">
+                    <input type="hidden" name="id" value="<%=id%>" />
+                </div>
+                <div class="col-lg-12 col-md-4 col-sm-12 salir">
+                    <button class="boton" type="submit">Buscar</button>
+                </div>
+                <div class="col-lg-2 col-md-1">
+
+                </div>
+            </div>
+        </form>
+        <form class="" action="/api/aplicacion/crearForm">
+            <div class="form-group row">
+                <div class="col-lg-2 col-md-1">
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12 salir">
+
+                    <input type="hidden" name="id" value="<%=id%>" />
+                    <button class="boton" type="submit">Crear</button>
+                </div>
+                <div class="col-lg-2 col-md-1">
+                </div>
+            </div>
+        </form>
+        <div class="row fila">
+            <div class="col-lg-12 col-md-1">
+
+            </div>
+            <div class="col-lg-12 col-md-10 col-sm-12">
+                <table>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>VersiónApi</th>
+                        <th>Link</th>
+                        <th>Fecha Lanzamiento</th>
+                        <th>Costo</th>
+                        <th>Peso (GB)</th>
+                        <th>Acciones</th>
+                    </tr>
+
+                        <% listaAplicaciones.forEach((aplicacion)=>{ %>
+                        <tr>
+                            <td> <%=aplicacion.nombre%> </td>
+                            <td> <%=aplicacion.version%> </td>
+                            <td> <%=aplicacion.urlDescarga%> </td>
+                            <td> <%=aplicacion.fechaLanzamiento%> </td>
+                            <td> <%=aplicacion.costo %></td>
+                            <td> <%=aplicacion.pesoEnGigas %></td>
+                            <td>
+                                <form action="/api/aplicacion/eliminar">
+                                    <input type="hidden" name="id" value="<%=aplicacion.id%>" />
+                                    <input type="hidden" name="sistemaOperativoId" value="<%=aplicacion.sistemaOperativoId%>" />
+                                    <button type="submit">Borrar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <%}); %>
+                </table>                
+            </div>
+
+            <div class="col-lg-2 col-md-1">
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
